@@ -77,11 +77,28 @@
         totalMinutes += (h * 60) + m;
       }
 
-      const totalHours = totalMinutes / 60;
+      // save to localStorage
+      localStorage.setItem("totalMinutes", totalMinutes);
+
+      displayResult(totalMinutes);
+    }
+
+    function displayResult(totalMinutes) {
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
 
       document.getElementById("result").textContent =
-        "Total time: " + totalHours.toFixed(2) + " hours";
+        `Total time: ${hours} hours and ${minutes} mins`;
     }
+
+    // load saved value on page load
+    window.onload = function () {
+      const savedMinutes = Number(localStorage.getItem("totalMinutes"));
+      if (!isNaN(savedMinutes)) {
+        displayResult(savedMinutes);
+      }
+    };
   </script>
+
 </body>
 </html>
