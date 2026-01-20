@@ -1,7 +1,87 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <h1>My First Heading</h1>
-    <p>My first paragraph.</p>
-    </body>
-</html> 
+<head>
+  <style>
+    body {
+      background-color: rgb(71, 71, 71);
+      font-family: sans-serif;
+    }
+    h1, p, label {
+      color: wheat;
+      text-align: center;
+    }
+    .project {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 80px;
+      margin: 0 5px;
+    }
+    button {
+      display: block;
+      margin: 15px auto;
+    }
+    #result {
+      color: wheat;
+      text-align: center;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Calculator For Construct. made by @Traffic Person</h1>
+  <p>i got impatient okay</p>
+  <p>use tab to navigate quickly and swiftly</p>
+
+  <div id="projects">
+    <div class="project">
+      <input type="number" class="hours" placeholder="Hours" min="0">
+      <input type="number" class="minutes" placeholder="Minutes" min="0" max="59">
+    </div>
+  </div>
+
+  <button onclick="addProject()">Add Project</button>
+  <button onclick="calculate()">Calculate Total</button>
+
+  <p id="result"></p>
+
+  <script>
+    function addProject() {
+      const div = document.createElement("div");
+      div.className = "project";
+      div.innerHTML = `
+        <input type="number" class="hours" placeholder="Hours" min="0">
+        <input type="number" class="minutes" placeholder="Minutes" min="0" max="59">
+      `;
+      document.getElementById("projects").appendChild(div);
+    }
+
+    function calculate() {
+      const hoursInputs = document.querySelectorAll(".hours");
+      const minutesInputs = document.querySelectorAll(".minutes");
+
+      let totalMinutes = 0;
+
+      for (let i = 0; i < hoursInputs.length; i++) {
+        const h = Number(hoursInputs[i].value) || 0;
+        const m = Number(minutesInputs[i].value) || 0;
+
+        if (m >= 60) {
+          document.getElementById("result").textContent =
+            "One of your projects has 60+ minutes. Fix it.";
+          return;
+        }
+
+        totalMinutes += (h * 60) + m;
+      }
+
+      const totalHours = totalMinutes / 60;
+
+      document.getElementById("result").textContent =
+        "Total time: " + totalHours.toFixed(2) + " hours";
+    }
+  </script>
+</body>
+</html>
