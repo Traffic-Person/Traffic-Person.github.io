@@ -1,17 +1,57 @@
-body {
-  background-color: black;
-  text-align: center;
-}
-
-@keyframes introAnim {
-  0% {color: black;}
-  100% {color: white;}
-}
-
-.icontent {
+body { 
+  background-color: black; 
+  text-align: center; 
+} 
+@keyframes introAnim { 
+  0% {color: black;} 
+  100% {color: white;} 
+} 
+.content { 
   position: relative;
-  top: 50px;
-  color: white;
-  animation-name: introAnim;
-  animation-duration: 2s;
+  top: 50px; 
+  color: white; 
+  animation-name: introAnim; 
+  animation-duration: 2s; 
+} 
+a { 
+  color: white; 
+  position: absolute; 
+  left: 50px; 
+  top: -145px; 
+} 
+@keyframes hoverhclogo { 
+  from {top: -145px; transform: rotate(0deg);} 
+  to {top: -140px; transform: rotate(2deg);} 
+} 
+a:hover { 
+  animation: hoverhclogo 0.5s forwards; 
+} 
+@keyframes nhoverhclogo { 
+  from {top: -140px; transform: rotate(2deg);} 
+  to {top: -145px; transform: rotate(0deg);} 
+} 
+a:not(:hover) { 
+  animation: nhoverhclogo 0.5s forwards; 
+} 
+.content p { 
+  margin-left: -10px; 
+  top: 10px; 
+} 
+#linux { 
+  position: relative; 
+  top: -10px; 
+} 
+#C++ { 
+  position: relative; 
+  left: -15px; 
+} 
+#rust {
+  background-color: white; 
+}
+.links {
+  position: relative;
+}
+#slack {
+  position: relative;
+  left: -36vw;
 }
